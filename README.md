@@ -9,14 +9,26 @@ As TILDA had broader inclusion criteria compared to the CPCR cohort, a subsample
 
 The following variables were considered in the analysis:
 tilda "Cohort status" with values 0 "CPCR cohort (EMR data)" 1 "TILDA cohort (self-report data)"
+
 gender "Gender" with values 1 "Male" and 2 "Female" 
+
 educcn "Highest level of educational attainment" with values 1 "Basic education" 2 "Upper and post-secondary"
+
 new_csoscn "Social class" with values 1 "Unskilled" 2 "Skilled"
+
 new_wlwn_1 "Living arrangements" with values label define lives 1 "Husband/wife/partner" 2 "Family/relatives" 3 "Lives alone" 4 "Other"
+
 cmarsn_1 "Marital status" with values 1 "Married" 2 "Separated/divorced" 3 "Widowed" 4 "Never married/single"
+
 agew1 "Age at baseline in years"
+
 hipmt_1 "Private health insurance status" with values 1 "Yes" 0 "No"
+
 ndrugs_1 "Number of medications"
+
 hu005 "Number of GP visits in previous 12 months"
+
 hu007 "Number of ED visits in previous 12 months"
+
 hu008 "Number of OPD visits in previous 12 months"
+
