@@ -1,1 +1,25 @@
 Simulated dataset (created using R/synthpop) for 2,183 included participants.
+For more information on synthpop see: https://cran.r-project.org/web/packages/synthpop/vignettes/synthpop.pdf
+Variables in the original dataset were presented in the following order: tilda gender cmarsn_1 new_wlwn_1 educcn new_csoscn hipmt_1 ndrugs_1 agew1 hu005 hu007 hu008
+The default options in synthpop were used. Values of the variable tilda were randomly sampled from the original dataset. Subsequent variables were synthesised using non-parametric methods (CART) using all preceding variables as predictors. The exception to this was the three healthcare utilisation outcome variables were synthesised using only participant characteristics, and not any of the other outcome variables.
+The R code used to produce this dataset is as follows:
+library(synthpop)
+library(foreign)
+cohort <- read.dta("cohorthu.dta")
+
+my.seed <- XXX
+syncohort.ini <- syn(cohort, seed = my.seed)
+
+predictor.matrix.corrected <- syncohort.ini$predictor.matrix
+visit.correct <- syncohort.ini$visit.sequence
+method.correct <- syncohort.ini$method
+predictor.matrix.corrected["hu008", "hu007"] <- 0
+predictor.matrix.corrected["hu008", "hu005"] <- 0
+predictor.matrix.corrected["hu007", "hu005"] <- 0
+
+syncohort.fin <- syn(cohort, visit.sequence = visit.correct, 
+method = method.correct, predictor.matrix = predictor.matrix.corrected, 
+seed = my.seed)
+
+write.syn(syncohort.fin, "synthcohorthu", filetype = c("Stata"), 
+convert.factors = "numeric", data.labels = NULL, save.complete = FALSE, extended.info = FALSE)
